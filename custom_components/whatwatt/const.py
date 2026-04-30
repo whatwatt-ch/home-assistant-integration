@@ -233,6 +233,5 @@ SENSOR_TYPES = {
     ATTR_TARIFF: {
         "unit": None,
         "icon": "mdi:counter",
-        "state_class": "measurement",
     },
 }

@@ -47,7 +47,6 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         configuration_url=f"http://{device_ip}" if device_ip else None,
     )
 
-    hass.data.setdefault(DOMAIN, {})
     hass.data[DOMAIN][entry.entry_id] = {
         "mqtt_topic": mqtt_topic,
         "device_ip": device_ip,
@@ -69,7 +68,11 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
                 _LOGGER.warning("whatwatt: message missing sys_id field: %s", payload)
                 return
 
-            for sensor in hass.data[DOMAIN][entry.entry_id].get("sensors", {}).values():
+            entry_data = hass.data.get(DOMAIN, {}).get(entry.entry_id)
+            if not entry_data:
+                return
+
+            for sensor in entry_data.get("sensors", {}).values():
                 sensor.handle_mqtt_message(payload)
 
         except json.JSONDecodeError:

@@ -79,7 +79,10 @@ class WhatWattSensor(SensorEntity):
             if value is None:
                 return
             try:
-                self._state = round(float(value), 2)
+                if self._sensor_type == "tariff":
+                    self._state = int(value)
+                else:
+                    self._state = round(float(value), 2)
                 self._available = True
             except (ValueError, TypeError) as ex:
                 _LOGGER.error(
@@ -88,6 +91,7 @@ class WhatWattSensor(SensorEntity):
                     value,
                     ex,
                 )
+                self._state = None
                 self._available = False
 
             self.async_write_ha_state()

@@ -3,10 +3,6 @@ import re
 import voluptuous as vol
 
 from homeassistant import config_entries
-from homeassistant.core import HomeAssistant, callback
-from homeassistant.helpers import config_validation as cv
-from homeassistant.helpers.typing import ConfigType
-from homeassistant.components import mqtt
 
 from .const import (
     DOMAIN,
@@ -33,7 +29,7 @@ class WhatWattConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 data_schema=vol.Schema(
                     {
                         vol.Required(CONF_MQTT_TOPIC): str,
-                        vol.Required(CONF_DEVICE_IP): str,
+                        vol.Optional(CONF_DEVICE_IP, default=""): str,
                         vol.Optional("name", default=DEFAULT_NAME): str,
                     }
                 ),
@@ -49,9 +45,9 @@ class WhatWattConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             if not mqtt_topic or not self._is_valid_mqtt_topic(mqtt_topic):
                 errors[CONF_MQTT_TOPIC] = "invalid_mqtt_topic"
 
-            # Validate IP address
-            device_ip = user_input.get(CONF_DEVICE_IP)
-            if not device_ip or not self._is_valid_ip(device_ip):
+            # Validate IP address (optional)
+            device_ip = user_input.get(CONF_DEVICE_IP, "")
+            if device_ip and not self._is_valid_ip(device_ip):
                 errors[CONF_DEVICE_IP] = "invalid_ip"
 
             if not errors:
@@ -70,7 +66,7 @@ class WhatWattConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             data_schema=vol.Schema(
                 {
                     vol.Required(CONF_MQTT_TOPIC): str,
-                    vol.Required(CONF_DEVICE_IP): str,
+                    vol.Optional(CONF_DEVICE_IP, default=""): str,
                     vol.Optional("name", default=DEFAULT_NAME): str,
                 }
             ),
