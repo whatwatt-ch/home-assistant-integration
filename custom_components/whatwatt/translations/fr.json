@@ -9,6 +9,15 @@
           "device_ip": "Adresse IP de l'appareil",
           "name": "Nom"
         }
+      },
+      "reconfigure": {
+        "title": "Reconfigurer l'appareil whatwatt",
+        "description": "Mettre à jour la configuration de votre intégration whatwatt.",
+        "data": {
+          "mqtt_topic": "Topic MQTT",
+          "device_ip": "Adresse IP de l'appareil",
+          "name": "Nom"
+        }
       }
     },
     "error": {
@@ -18,7 +27,8 @@
       "mqtt_not_configured": "L'intégration MQTT n'est pas configurée. Veuillez d'abord configurer MQTT à {mqtt_config_url}"
     },
     "abort": {
-      "already_configured": "L'appareil est déjà configuré"
+      "already_configured": "L'appareil est déjà configuré",
+      "reconfigure_successful": "Configuration mise à jour avec succès"
     }
   },
   "entity": {

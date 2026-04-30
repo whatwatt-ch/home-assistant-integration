@@ -1,0 +1,17 @@
+[project]
+name = "whatwatt"
+version = "0.4.0"
+description = "Home Assistant integration for whatwatt Go electricity meter readers"
+requires-python = ">=3.12"
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "pytest-asyncio",
+    "pytest-homeassistant-custom-component",
+    "pytest-cov",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

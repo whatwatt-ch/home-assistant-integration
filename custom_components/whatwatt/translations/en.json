@@ -9,6 +9,15 @@
           "device_ip": "Device IP Address",
           "name": "Name"
         }
+      },
+      "reconfigure": {
+        "title": "Reconfigure whatwatt device",
+        "description": "Update the configuration of your whatwatt integration.",
+        "data": {
+          "mqtt_topic": "MQTT Topic",
+          "device_ip": "Device IP Address",
+          "name": "Name"
+        }
       }
     },
     "error": {
@@ -18,7 +27,8 @@
       "mqtt_not_configured": "MQTT integration is not set up. Please configure MQTT first at {mqtt_config_url}"
     },
     "abort": {
-      "already_configured": "Device is already configured"
+      "already_configured": "Device is already configured",
+      "reconfigure_successful": "Configuration updated successfully"
     }
   },
   "entity": {

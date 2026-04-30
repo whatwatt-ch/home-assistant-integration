@@ -1,5 +1,13 @@
 """Constants for the whatwatt integration."""
 
+from homeassistant.components.sensor import SensorDeviceClass, SensorStateClass
+from homeassistant.const import (
+    UnitOfElectricCurrent,
+    UnitOfElectricPotential,
+    UnitOfEnergy,
+    UnitOfPower,
+)
+
 DOMAIN = "whatwatt"
 
 # Configuration
@@ -59,179 +67,192 @@ ATTR_REACTIVE_ENERGY_OUT = "reactive_energy_out"
 # Tariff
 ATTR_TARIFF = "tariff"
 
-# Units
-UNIT_POWER = "kW"
-UNIT_ENERGY = "kWh"
-UNIT_VOLTAGE = "V"
-UNIT_CURRENT = "A"
+# Units without HA enum (no device_class available for these)
 UNIT_APPARENT_POWER = "kVA"
 UNIT_REACTIVE_POWER = "kvar"
 UNIT_REACTIVE_ENERGY = "kvarh"
 
-# Sensor types
 SENSOR_TYPES = {
-    # Active power
     ATTR_POWER_IN: {
-        "unit": UNIT_POWER,
+        "unit": UnitOfPower.KILO_WATT,
         "icon": "mdi:transmission-tower-import",
-        "device_class": "power",
-        "state_class": "measurement",
+        "device_class": SensorDeviceClass.POWER,
+        "state_class": SensorStateClass.MEASUREMENT,
+        "precision": 2,
     },
     ATTR_POWER_OUT: {
-        "unit": UNIT_POWER,
+        "unit": UnitOfPower.KILO_WATT,
         "icon": "mdi:transmission-tower-export",
-        "device_class": "power",
-        "state_class": "measurement",
+        "device_class": SensorDeviceClass.POWER,
+        "state_class": SensorStateClass.MEASUREMENT,
+        "precision": 2,
     },
     ATTR_POWER_IN_L1: {
-        "unit": UNIT_POWER,
+        "unit": UnitOfPower.KILO_WATT,
         "icon": "mdi:transmission-tower-import",
-        "device_class": "power",
-        "state_class": "measurement",
+        "device_class": SensorDeviceClass.POWER,
+        "state_class": SensorStateClass.MEASUREMENT,
+        "precision": 2,
     },
     ATTR_POWER_IN_L2: {
-        "unit": UNIT_POWER,
+        "unit": UnitOfPower.KILO_WATT,
         "icon": "mdi:transmission-tower-import",
-        "device_class": "power",
-        "state_class": "measurement",
+        "device_class": SensorDeviceClass.POWER,
+        "state_class": SensorStateClass.MEASUREMENT,
+        "precision": 2,
     },
     ATTR_POWER_IN_L3: {
-        "unit": UNIT_POWER,
+        "unit": UnitOfPower.KILO_WATT,
         "icon": "mdi:transmission-tower-import",
-        "device_class": "power",
-        "state_class": "measurement",
+        "device_class": SensorDeviceClass.POWER,
+        "state_class": SensorStateClass.MEASUREMENT,
+        "precision": 2,
     },
     ATTR_POWER_OUT_L1: {
-        "unit": UNIT_POWER,
+        "unit": UnitOfPower.KILO_WATT,
         "icon": "mdi:transmission-tower-export",
-        "device_class": "power",
-        "state_class": "measurement",
+        "device_class": SensorDeviceClass.POWER,
+        "state_class": SensorStateClass.MEASUREMENT,
+        "precision": 2,
     },
     ATTR_POWER_OUT_L2: {
-        "unit": UNIT_POWER,
+        "unit": UnitOfPower.KILO_WATT,
         "icon": "mdi:transmission-tower-export",
-        "device_class": "power",
-        "state_class": "measurement",
+        "device_class": SensorDeviceClass.POWER,
+        "state_class": SensorStateClass.MEASUREMENT,
+        "precision": 2,
     },
     ATTR_POWER_OUT_L3: {
-        "unit": UNIT_POWER,
+        "unit": UnitOfPower.KILO_WATT,
         "icon": "mdi:transmission-tower-export",
-        "device_class": "power",
-        "state_class": "measurement",
+        "device_class": SensorDeviceClass.POWER,
+        "state_class": SensorStateClass.MEASUREMENT,
+        "precision": 2,
     },
-    # Active energy
     ATTR_ENERGY_IN: {
-        "unit": UNIT_ENERGY,
+        "unit": UnitOfEnergy.KILO_WATT_HOUR,
         "icon": "mdi:home-import-outline",
-        "device_class": "energy",
-        "state_class": "total_increasing",
+        "device_class": SensorDeviceClass.ENERGY,
+        "state_class": SensorStateClass.TOTAL_INCREASING,
+        "precision": 1,
     },
     ATTR_ENERGY_OUT: {
-        "unit": UNIT_ENERGY,
+        "unit": UnitOfEnergy.KILO_WATT_HOUR,
         "icon": "mdi:home-export-outline",
-        "device_class": "energy",
-        "state_class": "total_increasing",
+        "device_class": SensorDeviceClass.ENERGY,
+        "state_class": SensorStateClass.TOTAL_INCREASING,
+        "precision": 1,
     },
     ATTR_ENERGY_IN_T1: {
-        "unit": UNIT_ENERGY,
+        "unit": UnitOfEnergy.KILO_WATT_HOUR,
         "icon": "mdi:home-import-outline",
-        "device_class": "energy",
-        "state_class": "total_increasing",
+        "device_class": SensorDeviceClass.ENERGY,
+        "state_class": SensorStateClass.TOTAL_INCREASING,
+        "precision": 1,
     },
     ATTR_ENERGY_IN_T2: {
-        "unit": UNIT_ENERGY,
+        "unit": UnitOfEnergy.KILO_WATT_HOUR,
         "icon": "mdi:home-import-outline",
-        "device_class": "energy",
-        "state_class": "total_increasing",
+        "device_class": SensorDeviceClass.ENERGY,
+        "state_class": SensorStateClass.TOTAL_INCREASING,
+        "precision": 1,
     },
     ATTR_ENERGY_OUT_T1: {
-        "unit": UNIT_ENERGY,
+        "unit": UnitOfEnergy.KILO_WATT_HOUR,
         "icon": "mdi:home-export-outline",
-        "device_class": "energy",
-        "state_class": "total_increasing",
+        "device_class": SensorDeviceClass.ENERGY,
+        "state_class": SensorStateClass.TOTAL_INCREASING,
+        "precision": 1,
     },
     ATTR_ENERGY_OUT_T2: {
-        "unit": UNIT_ENERGY,
+        "unit": UnitOfEnergy.KILO_WATT_HOUR,
         "icon": "mdi:home-export-outline",
-        "device_class": "energy",
-        "state_class": "total_increasing",
+        "device_class": SensorDeviceClass.ENERGY,
+        "state_class": SensorStateClass.TOTAL_INCREASING,
+        "precision": 1,
     },
-    # Voltage
     ATTR_VOLTAGE_L1: {
-        "unit": UNIT_VOLTAGE,
+        "unit": UnitOfElectricPotential.VOLT,
         "icon": "mdi:sine-wave",
-        "device_class": "voltage",
-        "state_class": "measurement",
+        "device_class": SensorDeviceClass.VOLTAGE,
+        "state_class": SensorStateClass.MEASUREMENT,
+        "precision": 1,
     },
     ATTR_VOLTAGE_L2: {
-        "unit": UNIT_VOLTAGE,
+        "unit": UnitOfElectricPotential.VOLT,
         "icon": "mdi:sine-wave",
-        "device_class": "voltage",
-        "state_class": "measurement",
+        "device_class": SensorDeviceClass.VOLTAGE,
+        "state_class": SensorStateClass.MEASUREMENT,
+        "precision": 1,
     },
     ATTR_VOLTAGE_L3: {
-        "unit": UNIT_VOLTAGE,
+        "unit": UnitOfElectricPotential.VOLT,
         "icon": "mdi:sine-wave",
-        "device_class": "voltage",
-        "state_class": "measurement",
+        "device_class": SensorDeviceClass.VOLTAGE,
+        "state_class": SensorStateClass.MEASUREMENT,
+        "precision": 1,
     },
-    # Current
     ATTR_CURRENT_L1: {
-        "unit": UNIT_CURRENT,
+        "unit": UnitOfElectricCurrent.AMPERE,
         "icon": "mdi:current-ac",
-        "device_class": "current",
-        "state_class": "measurement",
+        "device_class": SensorDeviceClass.CURRENT,
+        "state_class": SensorStateClass.MEASUREMENT,
+        "precision": 2,
     },
     ATTR_CURRENT_L2: {
-        "unit": UNIT_CURRENT,
+        "unit": UnitOfElectricCurrent.AMPERE,
         "icon": "mdi:current-ac",
-        "device_class": "current",
-        "state_class": "measurement",
+        "device_class": SensorDeviceClass.CURRENT,
+        "state_class": SensorStateClass.MEASUREMENT,
+        "precision": 2,
     },
     ATTR_CURRENT_L3: {
-        "unit": UNIT_CURRENT,
+        "unit": UnitOfElectricCurrent.AMPERE,
         "icon": "mdi:current-ac",
-        "device_class": "current",
-        "state_class": "measurement",
+        "device_class": SensorDeviceClass.CURRENT,
+        "state_class": SensorStateClass.MEASUREMENT,
+        "precision": 2,
     },
-    # Power factor
     ATTR_POWER_FACTOR: {
         "unit": None,
         "icon": "mdi:angle-acute",
-        "device_class": "power_factor",
-        "state_class": "measurement",
+        "device_class": SensorDeviceClass.POWER_FACTOR,
+        "state_class": SensorStateClass.MEASUREMENT,
+        "precision": 2,
     },
-    # Apparent power
     ATTR_APPARENT_POWER: {
         "unit": UNIT_APPARENT_POWER,
         "icon": "mdi:flash-triangle",
-        "state_class": "measurement",
+        "state_class": SensorStateClass.MEASUREMENT,
+        "precision": 2,
     },
-    # Reactive power
     ATTR_REACTIVE_POWER_IN: {
         "unit": UNIT_REACTIVE_POWER,
         "icon": "mdi:flash-triangle-outline",
-        "state_class": "measurement",
+        "state_class": SensorStateClass.MEASUREMENT,
+        "precision": 2,
     },
     ATTR_REACTIVE_POWER_OUT: {
         "unit": UNIT_REACTIVE_POWER,
         "icon": "mdi:flash-triangle-outline",
-        "state_class": "measurement",
+        "state_class": SensorStateClass.MEASUREMENT,
+        "precision": 2,
     },
-    # Reactive energy
     ATTR_REACTIVE_ENERGY_IN: {
         "unit": UNIT_REACTIVE_ENERGY,
         "icon": "mdi:lightning-bolt-circle",
-        "state_class": "total_increasing",
+        "state_class": SensorStateClass.TOTAL_INCREASING,
+        "precision": 1,
     },
     ATTR_REACTIVE_ENERGY_OUT: {
         "unit": UNIT_REACTIVE_ENERGY,
         "icon": "mdi:lightning-bolt-circle",
-        "state_class": "total_increasing",
+        "state_class": SensorStateClass.TOTAL_INCREASING,
+        "precision": 1,
     },
-    # Tariff
     ATTR_TARIFF: {
         "unit": None,
         "icon": "mdi:counter",
+        "precision": 0,
     },
 }

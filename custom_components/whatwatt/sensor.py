@@ -60,6 +60,7 @@ class WhatWattSensor(SensorEntity):
         self._attr_icon = sensor_config.get("icon")
         self._attr_device_class = sensor_config.get("device_class")
         self._attr_state_class = sensor_config.get("state_class")
+        self._attr_suggested_display_precision = sensor_config.get("precision")
 
     @property
     def native_value(self) -> StateType:
