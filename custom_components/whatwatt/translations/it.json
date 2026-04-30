@@ -1,0 +1,58 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connessione al dispositivo whatwatt",
+        "description": "Configurare l'integrazione whatwatt per monitorare il contatore elettrico.",
+        "data": {
+          "mqtt_topic": "Topic MQTT",
+          "device_ip": "Indirizzo IP del dispositivo",
+          "name": "Nome"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Connessione fallita",
+      "invalid_mqtt_topic": "Formato topic MQTT non valido",
+      "invalid_ip": "Formato indirizzo IP non valido",
+      "mqtt_not_configured": "L'integrazione MQTT non è configurata. Configurare prima MQTT su {mqtt_config_url}"
+    },
+    "abort": {
+      "already_configured": "Il dispositivo è già configurato"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "power_in": { "name": "Potenza assorbita" },
+      "power_out": { "name": "Potenza immessa" },
+      "power_in_l1": { "name": "Potenza assorbita L1" },
+      "power_in_l2": { "name": "Potenza assorbita L2" },
+      "power_in_l3": { "name": "Potenza assorbita L3" },
+      "power_out_l1": { "name": "Potenza immessa L1" },
+      "power_out_l2": { "name": "Potenza immessa L2" },
+      "power_out_l3": { "name": "Potenza immessa L3" },
+      "energy_in": { "name": "Energia consumata" },
+      "energy_out": { "name": "Energia immessa" },
+      "energy_in_t1": { "name": "Energia consumata T1" },
+      "energy_in_t2": { "name": "Energia consumata T2" },
+      "energy_out_t1": { "name": "Energia immessa T1" },
+      "energy_out_t2": { "name": "Energia immessa T2" },
+      "voltage_l1": { "name": "Tensione L1" },
+      "voltage_l2": { "name": "Tensione L2" },
+      "voltage_l3": { "name": "Tensione L3" },
+      "current_l1": { "name": "Corrente L1" },
+      "current_l2": { "name": "Corrente L2" },
+      "current_l3": { "name": "Corrente L3" },
+      "power_factor": { "name": "Fattore di potenza" },
+      "apparent_power": { "name": "Potenza apparente" },
+      "reactive_power_in": { "name": "Potenza reattiva assorbita" },
+      "reactive_power_out": { "name": "Potenza reattiva immessa" },
+      "reactive_energy_in": { "name": "Energia reattiva consumata" },
+      "reactive_energy_out": { "name": "Energia reattiva immessa" },
+      "tariff": { "name": "Tariffa" }
+    },
+    "button": {
+      "configuration": { "name": "Configurazione" }
+    }
+  }
+}

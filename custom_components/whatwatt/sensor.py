@@ -24,7 +24,7 @@ async def async_setup_entry(
 
     sensors = []
     for sensor_type, sensor_config in SENSOR_TYPES.items():
-        sensor = whatwattSensor(
+        sensor = WhatWattSensor(
             config_entry.entry_id,
             device_info,
             sensor_type,
@@ -36,7 +36,7 @@ async def async_setup_entry(
     async_add_entities(sensors)
 
 
-class whatwattSensor(SensorEntity):
+class WhatWattSensor(SensorEntity):
     """Representation of a whatwatt sensor."""
 
     _attr_has_entity_name = True
@@ -56,7 +56,7 @@ class whatwattSensor(SensorEntity):
         self._attr_unique_id = f"{entry_id}_{sensor_type}"
         self._attr_translation_key = sensor_type
         self._attr_device_info = device_info
-        self._attr_native_unit_of_measurement = sensor_config["unit"]
+        self._attr_native_unit_of_measurement = sensor_config.get("unit")
         self._attr_icon = sensor_config.get("icon")
         self._attr_device_class = sensor_config.get("device_class")
         self._attr_state_class = sensor_config.get("state_class")
@@ -75,14 +75,17 @@ class whatwattSensor(SensorEntity):
     def handle_mqtt_message(self, message: Dict[str, Any]) -> None:
         """Handle new MQTT messages."""
         if self._sensor_type in message:
+            value = message[self._sensor_type]
+            if value is None:
+                return
             try:
-                self._state = round(float(message[self._sensor_type]), 2)
+                self._state = round(float(value), 2)
                 self._available = True
             except (ValueError, TypeError) as ex:
                 _LOGGER.error(
                     "whatwatt: could not parse %s value %s: %s",
                     self._sensor_type,
-                    message[self._sensor_type],
+                    value,
                     ex,
                 )
                 self._available = False

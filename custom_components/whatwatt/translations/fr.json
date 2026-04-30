@@ -1,0 +1,58 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connexion à l'appareil whatwatt",
+        "description": "Configurer l'intégration whatwatt pour surveiller votre compteur électrique.",
+        "data": {
+          "mqtt_topic": "Topic MQTT",
+          "device_ip": "Adresse IP de l'appareil",
+          "name": "Nom"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Échec de la connexion",
+      "invalid_mqtt_topic": "Format de topic MQTT invalide",
+      "invalid_ip": "Format d'adresse IP invalide",
+      "mqtt_not_configured": "L'intégration MQTT n'est pas configurée. Veuillez d'abord configurer MQTT à {mqtt_config_url}"
+    },
+    "abort": {
+      "already_configured": "L'appareil est déjà configuré"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "power_in": { "name": "Puissance consommée" },
+      "power_out": { "name": "Puissance injectée" },
+      "power_in_l1": { "name": "Puissance consommée L1" },
+      "power_in_l2": { "name": "Puissance consommée L2" },
+      "power_in_l3": { "name": "Puissance consommée L3" },
+      "power_out_l1": { "name": "Puissance injectée L1" },
+      "power_out_l2": { "name": "Puissance injectée L2" },
+      "power_out_l3": { "name": "Puissance injectée L3" },
+      "energy_in": { "name": "Énergie consommée" },
+      "energy_out": { "name": "Énergie injectée" },
+      "energy_in_t1": { "name": "Énergie consommée T1" },
+      "energy_in_t2": { "name": "Énergie consommée T2" },
+      "energy_out_t1": { "name": "Énergie injectée T1" },
+      "energy_out_t2": { "name": "Énergie injectée T2" },
+      "voltage_l1": { "name": "Tension L1" },
+      "voltage_l2": { "name": "Tension L2" },
+      "voltage_l3": { "name": "Tension L3" },
+      "current_l1": { "name": "Courant L1" },
+      "current_l2": { "name": "Courant L2" },
+      "current_l3": { "name": "Courant L3" },
+      "power_factor": { "name": "Facteur de puissance" },
+      "apparent_power": { "name": "Puissance apparente" },
+      "reactive_power_in": { "name": "Puissance réactive consommée" },
+      "reactive_power_out": { "name": "Puissance réactive injectée" },
+      "reactive_energy_in": { "name": "Énergie réactive consommée" },
+      "reactive_energy_out": { "name": "Énergie réactive injectée" },
+      "tariff": { "name": "Tarif" }
+    },
+    "button": {
+      "configuration": { "name": "Configuration" }
+    }
+  }
+}

@@ -23,10 +23,10 @@ async def async_setup_entry(
     device_ip = config_entry.data.get(CONF_DEVICE_IP, "")
     device_info = entry_data["device_info"]
 
-    async_add_entities([whatwattConfigButton(config_entry.entry_id, device_ip, device_info)])
+    async_add_entities([WhatWattConfigButton(config_entry.entry_id, device_ip, device_info)])
 
 
-class whatwattConfigButton(ButtonEntity):
+class WhatWattConfigButton(ButtonEntity):
     """Button to open the whatwatt configuration page."""
 
     _attr_has_entity_name = True

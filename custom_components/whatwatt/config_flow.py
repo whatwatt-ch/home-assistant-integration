@@ -16,7 +16,7 @@ from .const import (
 )
 
 
-class whatwattConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
+class WhatWattConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """Handle a config flow for whatwatt."""
 
     VERSION = 1

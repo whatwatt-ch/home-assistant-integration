@@ -46,11 +46,31 @@ Open your browser and enter the IP address of the whatwatt GO device (e.g., http
   "time":"${timestamp}",
   "power_in":"${1_7_0}",
   "power_out":"${2_7_0}",
+  "power_in_l1":"${21_7_0}",
+  "power_in_l2":"${41_7_0}",
+  "power_in_l3":"${61_7_0}",
+  "power_out_l1":"${22_7_0}",
+  "power_out_l2":"${42_7_0}",
+  "power_out_l3":"${62_7_0}",
   "energy_in":"${1_8_0}",
   "energy_out":"${2_8_0}",
+  "energy_in_t1":"${1_8_1}",
+  "energy_in_t2":"${1_8_2}",
+  "energy_out_t1":"${2_8_1}",
+  "energy_out_t2":"${2_8_2}",
   "voltage_l1":"${32_7_0}",
   "voltage_l2":"${52_7_0}",
-  "voltage_l3":"${72_7_0}"
+  "voltage_l3":"${72_7_0}",
+  "current_l1":"${31_7_0}",
+  "current_l2":"${51_7_0}",
+  "current_l3":"${71_7_0}",
+  "power_factor":"${13_7_0}",
+  "apparent_power":"${9_7_0}",
+  "reactive_power_in":"${3_7_0}",
+  "reactive_power_out":"${4_7_0}",
+  "reactive_energy_in":"${3_8_0}",
+  "reactive_energy_out":"${4_8_0}",
+  "tariff":"${tariff}"
 }
 ```
 
@@ -93,17 +113,31 @@ For each whatwatt Go device, the following entities will be created:
 
 ### Sensors
 
-- **Power In**: Current power being drawn from the grid (W)
-- **Power Out**: Current power being exported to the grid (W)
-- **Energy In**: Total energy consumed from the grid (kWh)
-- **Energy Out**: Total energy exported to the grid (kWh)
-- **Voltage L1**: Voltage level on phase L1 (V)
-- **Voltage L2**: Voltage level on phase L2 (V)
-- **Voltage L3**: Voltage level on phase L3 (V)
+| Sensor | Unit | OBIS | Description |
+|--------|------|------|-------------|
+| Power In | kW | 1.7.0 | Active power import total |
+| Power Out | kW | 2.7.0 | Active power export total |
+| Power In L1/L2/L3 | kW | 21/41/61.7.0 | Active power import per phase |
+| Power Out L1/L2/L3 | kW | 22/42/62.7.0 | Active power export per phase |
+| Energy In | kWh | 1.8.0 | Active energy import total |
+| Energy Out | kWh | 2.8.0 | Active energy export total |
+| Energy In T1/T2 | kWh | 1.8.1/2 | Active energy import per tariff |
+| Energy Out T1/T2 | kWh | 2.8.1/2 | Active energy export per tariff |
+| Voltage L1/L2/L3 | V | 32/52/72.7.0 | Voltage per phase |
+| Current L1/L2/L3 | A | 31/51/71.7.0 | Current per phase |
+| Power Factor | — | 13.7.0 | Power factor (0–1) |
+| Apparent Power | kVA | 9.7.0 | Apparent power total |
+| Reactive Power In | kvar | 3.7.0 | Reactive power import |
+| Reactive Power Out | kvar | 4.7.0 | Reactive power export |
+| Reactive Energy In | kvarh | 3.8.0 | Reactive energy import |
+| Reactive Energy Out | kvarh | 4.8.0 | Reactive energy export |
+| Tariff | — | 96.14.0 | Active tariff (1–4) |
+
+> Only sensors present in your MQTT template will appear in Home Assistant. Add/remove fields from your whatwatt go template as needed.
 
 ### Buttons
 
-- **Configuration**: Opens the device's configuration page in your web browser
+- **Configuration**: Logs the device configuration URL
 
 ## MQTT Payload Format
 
@@ -111,18 +145,31 @@ The whatwatt Go device sends data in the following JSON format:
 
 ```json
 {
-  "sys_id": "device-id",
-  "meter_id": "meter-id",
-  "time": "timestamp",
-  "power_in": 1234.5,
+  "sys_id": "whatwatt-123456",
+  "meter_id": "meter-789012",
+  "time": "2025-03-27T22:00:00Z",
+  "power_in": 1.23,
   "power_out": 0.0,
+  "power_in_l1": 0.45,
+  "power_in_l2": 0.38,
+  "power_in_l3": 0.40,
   "energy_in": 12345.6,
   "energy_out": 123.4,
   "voltage_l1": 230.1,
   "voltage_l2": 231.2,
-  "voltage_l3": 229.8
+  "voltage_l3": 229.8,
+  "current_l1": 1.96,
+  "current_l2": 1.65,
+  "current_l3": 1.74,
+  "power_factor": 0.98,
+  "apparent_power": 1.26,
+  "reactive_power_in": 0.25,
+  "reactive_power_out": 0.0,
+  "tariff": 1
 }
 ```
+
+> Fields present in the payload depend on your MQTT template configuration on the whatwatt go device. Only included fields will create sensor entities.
 
 ## Troubleshooting
 

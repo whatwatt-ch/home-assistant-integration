@@ -1,0 +1,58 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Verbindung zum whatwatt Gerät",
+        "description": "whatwatt Integration zur Überwachung Ihres Stromzählers einrichten.",
+        "data": {
+          "mqtt_topic": "MQTT Topic",
+          "device_ip": "IP-Adresse des Geräts",
+          "name": "Name"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbindung fehlgeschlagen",
+      "invalid_mqtt_topic": "Ungültiges MQTT-Topic-Format",
+      "invalid_ip": "Ungültiges IP-Adressformat",
+      "mqtt_not_configured": "MQTT-Integration ist nicht eingerichtet. Bitte konfigurieren Sie zuerst MQTT unter {mqtt_config_url}"
+    },
+    "abort": {
+      "already_configured": "Gerät ist bereits konfiguriert"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "power_in": { "name": "Wirkleistung Bezug" },
+      "power_out": { "name": "Wirkleistung Einspeisung" },
+      "power_in_l1": { "name": "Wirkleistung Bezug L1" },
+      "power_in_l2": { "name": "Wirkleistung Bezug L2" },
+      "power_in_l3": { "name": "Wirkleistung Bezug L3" },
+      "power_out_l1": { "name": "Wirkleistung Einspeisung L1" },
+      "power_out_l2": { "name": "Wirkleistung Einspeisung L2" },
+      "power_out_l3": { "name": "Wirkleistung Einspeisung L3" },
+      "energy_in": { "name": "Wirkenergie Bezug" },
+      "energy_out": { "name": "Wirkenergie Einspeisung" },
+      "energy_in_t1": { "name": "Wirkenergie Bezug T1" },
+      "energy_in_t2": { "name": "Wirkenergie Bezug T2" },
+      "energy_out_t1": { "name": "Wirkenergie Einspeisung T1" },
+      "energy_out_t2": { "name": "Wirkenergie Einspeisung T2" },
+      "voltage_l1": { "name": "Spannung L1" },
+      "voltage_l2": { "name": "Spannung L2" },
+      "voltage_l3": { "name": "Spannung L3" },
+      "current_l1": { "name": "Strom L1" },
+      "current_l2": { "name": "Strom L2" },
+      "current_l3": { "name": "Strom L3" },
+      "power_factor": { "name": "Leistungsfaktor" },
+      "apparent_power": { "name": "Scheinleistung" },
+      "reactive_power_in": { "name": "Blindleistung Bezug" },
+      "reactive_power_out": { "name": "Blindleistung Einspeisung" },
+      "reactive_energy_in": { "name": "Blindenergie Bezug" },
+      "reactive_energy_out": { "name": "Blindenergie Einspeisung" },
+      "tariff": { "name": "Tarif" }
+    },
+    "button": {
+      "configuration": { "name": "Konfiguration" }
+    }
+  }
+}

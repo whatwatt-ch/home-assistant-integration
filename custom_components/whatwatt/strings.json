@@ -15,10 +15,44 @@
       "cannot_connect": "Failed to connect",
       "invalid_mqtt_topic": "Invalid MQTT topic format",
       "invalid_ip": "Invalid IP address format",
-      "mqtt_not_configured": "MQTT integration is not set up. Please set up MQTT first at {mqtt_config_url}"
+      "mqtt_not_configured": "MQTT integration is not set up. Please configure MQTT first at {mqtt_config_url}"
     },
     "abort": {
       "already_configured": "Device is already configured"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "power_in": { "name": "Power In" },
+      "power_out": { "name": "Power Out" },
+      "power_in_l1": { "name": "Power In L1" },
+      "power_in_l2": { "name": "Power In L2" },
+      "power_in_l3": { "name": "Power In L3" },
+      "power_out_l1": { "name": "Power Out L1" },
+      "power_out_l2": { "name": "Power Out L2" },
+      "power_out_l3": { "name": "Power Out L3" },
+      "energy_in": { "name": "Energy In" },
+      "energy_out": { "name": "Energy Out" },
+      "energy_in_t1": { "name": "Energy In T1" },
+      "energy_in_t2": { "name": "Energy In T2" },
+      "energy_out_t1": { "name": "Energy Out T1" },
+      "energy_out_t2": { "name": "Energy Out T2" },
+      "voltage_l1": { "name": "Voltage L1" },
+      "voltage_l2": { "name": "Voltage L2" },
+      "voltage_l3": { "name": "Voltage L3" },
+      "current_l1": { "name": "Current L1" },
+      "current_l2": { "name": "Current L2" },
+      "current_l3": { "name": "Current L3" },
+      "power_factor": { "name": "Power Factor" },
+      "apparent_power": { "name": "Apparent Power" },
+      "reactive_power_in": { "name": "Reactive Power In" },
+      "reactive_power_out": { "name": "Reactive Power Out" },
+      "reactive_energy_in": { "name": "Reactive Energy In" },
+      "reactive_energy_out": { "name": "Reactive Energy Out" },
+      "tariff": { "name": "Tariff" }
+    },
+    "button": {
+      "configuration": { "name": "Configuration" }
     }
   }
 }
