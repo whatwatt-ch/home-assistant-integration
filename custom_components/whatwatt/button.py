@@ -1,4 +1,4 @@
-"""Button platform for WhatWatt integration."""
+"""Button platform for whatwatt integration."""
 import logging
 from typing import Any
 
@@ -18,16 +18,16 @@ async def async_setup_entry(
     config_entry: ConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
-    """Set up the WhatWatt button."""
+    """Set up the whatwatt button."""
     entry_data = hass.data[DOMAIN][config_entry.entry_id]
     device_ip = config_entry.data.get(CONF_DEVICE_IP, "")
     device_info = entry_data["device_info"]
 
-    async_add_entities([WhatWattConfigButton(config_entry.entry_id, device_ip, device_info)])
+    async_add_entities([whatwattConfigButton(config_entry.entry_id, device_ip, device_info)])
 
 
-class WhatWattConfigButton(ButtonEntity):
-    """Button to open the WhatWatt configuration page."""
+class whatwattConfigButton(ButtonEntity):
+    """Button to open the whatwatt configuration page."""
 
     _attr_has_entity_name = True
     _attr_entity_category = EntityCategory.CONFIG
@@ -43,5 +43,5 @@ class WhatWattConfigButton(ButtonEntity):
     def press(self) -> None:
         """Handle the button press."""
         _LOGGER.info(
-            "WhatWatt: configuration page available at http://%s", self._device_ip
+            "whatwatt: configuration page available at http://%s", self._device_ip
         )

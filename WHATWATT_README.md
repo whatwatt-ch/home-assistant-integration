@@ -1,18 +1,18 @@
-# WhatWatt Home Assistant Integration
+# whatwatt Home Assistant Integration
 
-Custom Home Assistant integration for WhatWatt Go devices that read data from electricity meters.
+Custom Home Assistant integration for whatwatt Go devices that read data from electricity meters.
 
 ## Overview
 
-This integration allows Home Assistant to receive and display data from WhatWatt Go devices via MQTT. It provides sensors for power consumption, power generation, energy usage, and voltage levels for all three phases.
+This integration allows Home Assistant to receive and display data from whatwatt Go devices via MQTT. It provides sensors for power consumption, power generation, energy usage, and voltage levels for all three phases.
 
-![WhatWatt Logo](https://via.placeholder.com/200x100?text=WhatWatt)
+![whatwatt Logo](https://via.placeholder.com/200x100?text=whatwatt)
 
 ## Features
 
 - Easy setup through the Home Assistant UI
 - Real-time monitoring of electricity usage
-- Support for multiple WhatWatt devices
+- Support for multiple whatwatt devices
 - Access to device configuration page
 
 ## Installation
@@ -24,7 +24,7 @@ This integration allows Home Assistant to receive and display data from WhatWatt
 3. Click the three dots in the top right corner and select "Custom repositories"
 4. Add the URL `https://github.com/vestiacom/whatwatt-home-asistance-integration` with category "Integration"
 5. Click "Add"
-6. Search for "WhatWatt" in the integrations tab
+6. Search for "whatwatt" in the integrations tab
 7. Click "Download"
 8. Restart Home Assistant
 
@@ -55,16 +55,16 @@ This integration allows Home Assistant to receive and display data from WhatWatt
 
 ## Configuration
 
-1. Make sure your WhatWatt Go device is configured to send data to your MQTT broker
+1. Make sure your whatwatt Go device is configured to send data to your MQTT broker
 2. In Home Assistant, go to Settings > Devices & Services
-3. Click "Add Integration" and search for "WhatWatt"
-4. Enter the MQTT topic that your WhatWatt Go device is publishing to
-5. Enter the IP address of your WhatWatt Go device (for accessing the configuration page)
+3. Click "Add Integration" and search for "whatwatt"
+4. Enter the MQTT topic that your whatwatt Go device is publishing to
+5. Enter the IP address of your whatwatt Go device (for accessing the configuration page)
 6. Optionally, provide a custom name for the device
 
 ## Testing
 
-A test script is included to simulate a WhatWatt device sending MQTT messages:
+A test script is included to simulate a whatwatt device sending MQTT messages:
 
 ```bash
 cd custom_components/whatwatt

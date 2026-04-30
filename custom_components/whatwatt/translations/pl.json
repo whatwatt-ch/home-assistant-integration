@@ -2,8 +2,8 @@
   "config": {
     "step": {
       "user": {
-        "title": "Połącz z urządzeniem WhatWatt",
-        "description": "Skonfiguruj integrację WhatWatt do monitorowania licznika energii elektrycznej.",
+        "title": "Połącz z urządzeniem whatwatt",
+        "description": "Skonfiguruj integrację whatwatt do monitorowania licznika energii elektrycznej.",
         "data": {
           "mqtt_topic": "Temat MQTT",
           "device_ip": "Adres IP urządzenia",

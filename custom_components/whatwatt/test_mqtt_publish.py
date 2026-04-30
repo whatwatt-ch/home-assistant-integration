@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Test script for WhatWatt Home Assistant integration.
+Test script for whatwatt Home Assistant integration.
 This script publishes a sample MQTT message to test the integration.
 
 Usage:
@@ -26,7 +26,7 @@ DEFAULT_SYS_ID = "whatwatt-test"
 DEFAULT_METER_ID = "meter-test"
 
 def generate_message():
-    """Generate a sample WhatWatt message with some random variations."""
+    """Generate a sample whatwatt message with some random variations."""
     power_in = random.uniform(800, 2500)
     power_out = random.uniform(0, 100) if random.random() > 0.7 else 0
     
@@ -95,7 +95,7 @@ if __name__ == "__main__":
     energy_out = 0
     
     # Parse command line arguments
-    parser = argparse.ArgumentParser(description="Test MQTT publisher for WhatWatt integration")
+    parser = argparse.ArgumentParser(description="Test MQTT publisher for whatwatt integration")
     parser.add_argument("--broker", default=DEFAULT_BROKER, help=f"MQTT broker address (default: {DEFAULT_BROKER})")
     parser.add_argument("--port", type=int, default=DEFAULT_PORT, help=f"MQTT broker port (default: {DEFAULT_PORT})")
     parser.add_argument("--topic", default=DEFAULT_TOPIC, help=f"MQTT topic to publish to (default: {DEFAULT_TOPIC})")

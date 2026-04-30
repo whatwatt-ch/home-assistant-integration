@@ -1,8 +1,8 @@
-# WhatWatt Home Assistant Integration
+# whatwatt Home Assistant Integration
 
-Custom Home Assistant integration for WhatWatt Go devices that read data from electricity meters.
+Custom Home Assistant integration for whatwatt Go devices that read data from electricity meters.
 
-![WhatWatt Logo](https://avatars.githubusercontent.com/u/201613898?s=200&v=4)
+![whatwatt Logo](https://avatars.githubusercontent.com/u/201613898?s=200&v=4)
 
 ## Requirements
 
@@ -11,23 +11,23 @@ Custom Home Assistant integration for WhatWatt Go devices that read data from el
   2. Search for "MQTT" and follow the setup instructions
   3. If you're using Home Assistant OS, we recommend using the Mosquitto MQTT Broker add-on
 
-- **WhatWatt Go Device**: Your device must be configured to publish data to your MQTT broker
+- **whatwatt Go Device**: Your device must be configured to publish data to your MQTT broker
 
 ## Features
 
-- Connects to WhatWatt Go devices via MQTT
+- Connects to whatwatt Go devices via MQTT
 - Displays real-time power consumption and generation data
 - Shows voltage levels for all three phases
 - Tracks total energy consumption and generation
 - Provides easy access to the device's configuration page
 
-## WhatWatt Go Configuration
+## whatwatt Go Configuration
 
-Before setting up the integration in Home Assistant, you need to configure your WhatWatt Go device to send data to your MQTT broker:
+Before setting up the integration in Home Assistant, you need to configure your whatwatt Go device to send data to your MQTT broker:
 
-### Step 1: Access WebUI of WhatWatt Go
+### Step 1: Access WebUI of whatwatt Go
 
-Open your browser and enter the IP address of the WhatWatt GO device (e.g., http://192.168.1.100) into the address field.
+Open your browser and enter the IP address of the whatwatt GO device (e.g., http://192.168.1.100) into the address field.
 
 ### Step 2: Configure MQTT Settings
 
@@ -69,7 +69,7 @@ Navigate to WebUI > System and set the "Interval to Systems" to 30 seconds.
 3. Click the three dots in the top right corner and select "Custom repositories"
 4. Add the URL `https://github.com/whatwatt-ch/home-assistant-integration` with category "Integration"
 5. Click "Add"
-6. Search for "WhatWatt" in the integrations tab
+6. Search for "whatwatt" in the integrations tab
 7. Click "Download"
 8. Restart Home Assistant
 
@@ -82,14 +82,14 @@ Navigate to WebUI > System and set the "Interval to Systems" to 30 seconds.
 ## Home Assistant Configuration
 
 1. In Home Assistant, go to Settings > Devices & Services
-2. Click "Add Integration" and search for "WhatWatt"
-3. Enter the MQTT topic that your WhatWatt Go device is publishing to (the same topic you configured in the WhatWatt Go device)
-4. Enter the IP address of your WhatWatt Go device (for accessing the configuration page)
+2. Click "Add Integration" and search for "whatwatt"
+3. Enter the MQTT topic that your whatwatt Go device is publishing to (the same topic you configured in the whatwatt Go device)
+4. Enter the IP address of your whatwatt Go device (for accessing the configuration page)
 5. Optionally, provide a custom name for the device
 
 ## Available Entities
 
-For each WhatWatt Go device, the following entities will be created:
+For each whatwatt Go device, the following entities will be created:
 
 ### Sensors
 
@@ -107,7 +107,7 @@ For each WhatWatt Go device, the following entities will be created:
 
 ## MQTT Payload Format
 
-The WhatWatt Go device sends data in the following JSON format:
+The whatwatt Go device sends data in the following JSON format:
 
 ```json
 {
@@ -129,13 +129,13 @@ The WhatWatt Go device sends data in the following JSON format:
 ### MQTT Connection Issues
 
 - Ensure that the MQTT integration is properly set up in Home Assistant
-- Verify that the WhatWatt Go device is correctly configured to publish to the MQTT broker
+- Verify that the whatwatt Go device is correctly configured to publish to the MQTT broker
 - Check that the MQTT topic in the integration configuration matches the one configured on the device
 
 ### Missing Sensors
 
 - The sensors will appear only after the first MQTT message is received
-- Check the Home Assistant logs for any errors related to the WhatWatt integration
+- Check the Home Assistant logs for any errors related to the whatwatt integration
 
 ### Configuration Button Not Working
 

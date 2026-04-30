@@ -1,4 +1,4 @@
-"""The WhatWatt integration."""
+"""The whatwatt integration."""
 import json
 import logging
 
@@ -24,13 +24,13 @@ PLATFORMS = [Platform.SENSOR, Platform.BUTTON]
 
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
-    """Set up the WhatWatt component."""
+    """Set up the whatwatt component."""
     hass.data.setdefault(DOMAIN, {})
     return True
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
-    """Set up WhatWatt from a config entry."""
+    """Set up whatwatt from a config entry."""
     mqtt_topic = entry.data[CONF_MQTT_TOPIC]
     device_ip = entry.data.get(CONF_DEVICE_IP, "")
     name = entry.data.get("name", DEFAULT_NAME)
@@ -42,8 +42,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     device_info = DeviceInfo(
         identifiers={(DOMAIN, entry.entry_id)},
         name=name,
-        manufacturer="WhatWatt AG",
-        model="WhatWatt Go",
+        manufacturer="whatwatt AG",
+        model="whatwatt Go",
         configuration_url=f"http://{device_ip}" if device_ip else None,
     )
 
@@ -62,20 +62,20 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         """Handle new MQTT messages."""
         try:
             payload = json.loads(msg.payload)
-            _LOGGER.debug("WhatWatt: received message: %s", payload)
+            _LOGGER.debug("whatwatt: received message: %s", payload)
 
             sys_id = payload.get(ATTR_SYS_ID)
             if not sys_id:
-                _LOGGER.warning("WhatWatt: message missing sys_id field: %s", payload)
+                _LOGGER.warning("whatwatt: message missing sys_id field: %s", payload)
                 return
 
             for sensor in hass.data[DOMAIN][entry.entry_id].get("sensors", {}).values():
                 sensor.handle_mqtt_message(payload)
 
         except json.JSONDecodeError:
-            _LOGGER.error("WhatWatt: invalid JSON in MQTT message")
+            _LOGGER.error("whatwatt: invalid JSON in MQTT message")
         except Exception as ex:
-            _LOGGER.error("WhatWatt: error processing MQTT message: %s", ex)
+            _LOGGER.error("whatwatt: error processing MQTT message: %s", ex)
 
     unsubscribe = await mqtt.async_subscribe(hass, mqtt_topic, message_received)
 

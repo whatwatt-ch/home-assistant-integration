@@ -1,6 +1,6 @@
 {
   "domain": "whatwatt",
-  "name": "WhatWatt",
+  "name": "whatwatt",
   "documentation": "https://github.com/whatwatt-ch/home-assistant-integration",
   "dependencies": ["mqtt"],
   "codeowners": ["@whatwatt-ch"],

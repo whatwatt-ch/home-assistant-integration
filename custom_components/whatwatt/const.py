@@ -1,4 +1,4 @@
-"""Constants for the WhatWatt integration."""
+"""Constants for the whatwatt integration."""
 
 DOMAIN = "whatwatt"
 
@@ -7,7 +7,7 @@ CONF_MQTT_TOPIC = "mqtt_topic"
 CONF_DEVICE_IP = "device_ip"
 
 # Default values
-DEFAULT_NAME = "WhatWatt"
+DEFAULT_NAME = "whatwatt"
 
 # Attributes
 ATTR_SYS_ID = "sys_id"

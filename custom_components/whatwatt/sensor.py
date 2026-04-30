@@ -1,4 +1,4 @@
-"""Sensor platform for WhatWatt integration."""
+"""Sensor platform for whatwatt integration."""
 import logging
 from typing import Any, Dict
 
@@ -18,13 +18,13 @@ async def async_setup_entry(
     config_entry: ConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
-    """Set up the WhatWatt sensor platform."""
+    """Set up the whatwatt sensor platform."""
     entry_data = hass.data[DOMAIN][config_entry.entry_id]
     device_info = entry_data["device_info"]
 
     sensors = []
     for sensor_type, sensor_config in SENSOR_TYPES.items():
-        sensor = WhatWattSensor(
+        sensor = whatwattSensor(
             config_entry.entry_id,
             device_info,
             sensor_type,
@@ -36,8 +36,8 @@ async def async_setup_entry(
     async_add_entities(sensors)
 
 
-class WhatWattSensor(SensorEntity):
-    """Representation of a WhatWatt sensor."""
+class whatwattSensor(SensorEntity):
+    """Representation of a whatwatt sensor."""
 
     _attr_has_entity_name = True
 
@@ -80,7 +80,7 @@ class WhatWattSensor(SensorEntity):
                 self._available = True
             except (ValueError, TypeError) as ex:
                 _LOGGER.error(
-                    "WhatWatt: could not parse %s value %s: %s",
+                    "whatwatt: could not parse %s value %s: %s",
                     self._sensor_type,
                     message[self._sensor_type],
                     ex,

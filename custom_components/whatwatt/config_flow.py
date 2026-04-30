@@ -1,4 +1,4 @@
-"""Config flow for WhatWatt integration."""
+"""Config flow for whatwatt integration."""
 import re
 import voluptuous as vol
 
@@ -16,8 +16,8 @@ from .const import (
 )
 
 
-class WhatWattConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
-    """Handle a config flow for WhatWatt."""
+class whatwattConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
+    """Handle a config flow for whatwatt."""
 
     VERSION = 1
 

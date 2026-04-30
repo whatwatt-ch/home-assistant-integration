@@ -2,8 +2,8 @@
   "config": {
     "step": {
       "user": {
-        "title": "Connect to WhatWatt device",
-        "description": "Set up WhatWatt integration to monitor your electricity meter.",
+        "title": "Connect to whatwatt device",
+        "description": "Set up whatwatt integration to monitor your electricity meter.",
         "data": {
           "mqtt_topic": "MQTT Topic",
           "device_ip": "Device IP Address",
