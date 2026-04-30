@@ -22,7 +22,7 @@ ATTR_VOLTAGE_L2 = "voltage_l2"
 ATTR_VOLTAGE_L3 = "voltage_l3"
 
 # Units
-UNIT_POWER = "W"
+UNIT_POWER = "kW"
 UNIT_ENERGY = "kWh"
 UNIT_VOLTAGE = "V"
 

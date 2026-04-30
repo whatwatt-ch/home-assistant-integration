@@ -95,6 +95,10 @@ For detailed documentation, see the [README.md](custom_components/whatwatt/READM
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
+## Acknowledgements
+
+Thanks to [@Bugga-CH](https://github.com/Bugga-CH) for identifying and reporting critical bugs in the original integration through their [community fork](https://github.com/Bugga-CH/home-assistant-integration-fix). Their contributions helped improve MQTT compatibility, device initialization, and overall stability of this integration.
+
 ## Support
 
 For issues, feature requests, or questions, please open an issue on the [GitHub repository](https://github.com/whatwatt-ch/home-assistant-integration/issues).

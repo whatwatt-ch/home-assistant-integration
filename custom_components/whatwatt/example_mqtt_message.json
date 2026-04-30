@@ -2,7 +2,7 @@
   "sys_id": "whatwatt-123456",
   "meter_id": "meter-789012",
   "time": "2025-03-27T22:00:00Z",
-  "power_in": 1234.5,
+  "power_in": 1.23,
   "power_out": 0.0,
   "energy_in": 12345.6,
   "energy_out": 123.4,
