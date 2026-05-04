@@ -1,5 +1,12 @@
 # whatwatt Home Assistant Integration
 
+[![CI](https://github.com/whatwatt-ch/home-assistant-integration/actions/workflows/ci.yml/badge.svg)](https://github.com/whatwatt-ch/home-assistant-integration/actions/workflows/ci.yml)
+[![HACS Validation](https://github.com/whatwatt-ch/home-assistant-integration/actions/workflows/validate.yml/badge.svg)](https://github.com/whatwatt-ch/home-assistant-integration/actions/workflows/validate.yml)
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/integration)
+[![GitHub release](https://img.shields.io/github/v/release/whatwatt-ch/home-assistant-integration)](https://github.com/whatwatt-ch/home-assistant-integration/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![HA Version](https://img.shields.io/badge/Home%20Assistant-2024.4%2B-blue.svg)](https://www.home-assistant.io/)
+
 Custom Home Assistant integration for whatwatt Go devices that read data from electricity meters.
 
 ## Overview
@@ -14,6 +21,8 @@ This integration allows Home Assistant to receive and display data from whatwatt
   1. Go to Settings > Devices & Services > Add Integration
   2. Search for "MQTT" and follow the setup instructions
   3. If you're using Home Assistant OS, we recommend using the Mosquitto MQTT Broker add-on
+
+- **Home Assistant 2024.4.0 or later**
 
 - **whatwatt Go Device**: Your device must be configured to publish data to your MQTT broker
 
@@ -77,15 +86,9 @@ Before using this integration, you need to configure your whatwatt Go device to 
 5. Enter the IP address of your whatwatt Go device (for accessing the configuration page)
 6. Optionally, provide a custom name for the device
 
-## Testing
+## Development
 
-A test script is included to simulate a whatwatt device sending MQTT messages:
-
-```bash
-cd custom_components/whatwatt
-pip install paho-mqtt
-./test_mqtt_publish.py --broker localhost --port 1883 --topic whatwatt/test --interval 10
-```
+See [CONTRIBUTING.md](CONTRIBUTING.md) for information on setting up a development environment, running tests, and submitting pull requests.
 
 ## Documentation
 

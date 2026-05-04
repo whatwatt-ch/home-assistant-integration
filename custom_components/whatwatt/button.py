@@ -8,7 +8,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
-from .const import DOMAIN, CONF_DEVICE_IP
+from .const import CONF_DEVICE_IP, DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 

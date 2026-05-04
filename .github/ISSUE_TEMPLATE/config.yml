@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://github.com/whatwatt-ch/home-assistant-integration/blob/main/custom_components/whatwatt/README.md
+    about: Check the documentation before opening an issue

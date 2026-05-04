@@ -11,7 +11,25 @@ test = [
     "pytest-homeassistant-custom-component",
     "pytest-cov",
 ]
+dev = [
+    "ruff",
+]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 testpaths = ["tests"]
+markers = [
+    "e2e: end-to-end tests requiring Docker (deselect with '-m \"not e2e\"')",
+]
+
+[tool.coverage.run]
+omit = ["custom_components/whatwatt/test_mqtt_publish.py"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF"]
+ignore = ["E501"]
+

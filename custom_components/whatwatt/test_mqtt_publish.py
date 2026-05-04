@@ -12,9 +12,10 @@ Requirements:
 
 import argparse
 import json
+import random
 import time
 from datetime import datetime
-import random
+
 import paho.mqtt.client as mqtt
 
 # Default values
@@ -29,17 +30,17 @@ def generate_message():
     """Generate a sample whatwatt message with some random variations."""
     power_in = random.uniform(800, 2500)
     power_out = random.uniform(0, 100) if random.random() > 0.7 else 0
-    
+
     # Accumulate energy over time
     global energy_in, energy_out
     energy_in += power_in / 3600  # Convert W to Wh and then to kWh
     energy_out += power_out / 3600
-    
+
     # Generate realistic voltage values
     voltage_l1 = random.uniform(220, 240)
     voltage_l2 = random.uniform(220, 240)
     voltage_l3 = random.uniform(220, 240)
-    
+
     return {
         "sys_id": DEFAULT_SYS_ID,
         "meter_id": DEFAULT_METER_ID,
@@ -64,17 +65,17 @@ def main(args):
     """Main function to publish MQTT messages."""
     client = mqtt.Client()
     client.on_connect = on_connect
-    
+
     # Connect to the broker
     try:
         client.connect(args.broker, args.port, 60)
     except Exception as e:
         print(f"Error connecting to MQTT broker: {e}")
         return
-    
+
     # Start the MQTT loop in a background thread
     client.loop_start()
-    
+
     try:
         print(f"Publishing messages to topic '{args.topic}' every {args.interval} seconds. Press Ctrl+C to stop.")
         while True:
@@ -93,7 +94,7 @@ if __name__ == "__main__":
     # Initialize energy counters
     energy_in = 0
     energy_out = 0
-    
+
     # Parse command line arguments
     parser = argparse.ArgumentParser(description="Test MQTT publisher for whatwatt integration")
     parser.add_argument("--broker", default=DEFAULT_BROKER, help=f"MQTT broker address (default: {DEFAULT_BROKER})")
@@ -101,5 +102,5 @@ if __name__ == "__main__":
     parser.add_argument("--topic", default=DEFAULT_TOPIC, help=f"MQTT topic to publish to (default: {DEFAULT_TOPIC})")
     parser.add_argument("--interval", type=int, default=DEFAULT_INTERVAL, help=f"Publish interval in seconds (default: {DEFAULT_INTERVAL})")
     args = parser.parse_args()
-    
+
     main(args)

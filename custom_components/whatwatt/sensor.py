@@ -1,6 +1,6 @@
 """Sensor platform for whatwatt integration."""
 import logging
-from typing import Any, Dict
+from typing import Any
 
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.config_entries import ConfigEntry
@@ -46,7 +46,7 @@ class WhatWattSensor(SensorEntity):
         entry_id: str,
         device_info: Any,
         sensor_type: str,
-        sensor_config: Dict[str, Any],
+        sensor_config: dict[str, Any],
     ) -> None:
         """Initialize the sensor."""
         self._sensor_type = sensor_type
@@ -73,7 +73,7 @@ class WhatWattSensor(SensorEntity):
         return self._available
 
     @callback
-    def handle_mqtt_message(self, message: Dict[str, Any]) -> None:
+    def handle_mqtt_message(self, message: dict[str, Any]) -> None:
         """Handle new MQTT messages."""
         if self._sensor_type in message:
             value = message[self._sensor_type]

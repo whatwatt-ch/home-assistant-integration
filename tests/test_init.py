@@ -3,7 +3,7 @@ import json
 
 from homeassistant.config_entries import ConfigEntryState
 from homeassistant.core import HomeAssistant
-
+from homeassistant.helpers import device_registry as dr
 from pytest_homeassistant_custom_component.common import (
     MockConfigEntry,
     async_fire_mqtt_message,
@@ -113,3 +113,60 @@ async def test_setup_entry_no_ip(
     await hass.async_block_till_done()
 
     assert mock_config_entry_no_ip.state is ConfigEntryState.LOADED
+
+
+# ── Device registry tests ───────────────────────────────────────────
+
+
+async def test_device_registry_entry(
+    hass: HomeAssistant,
+    mqtt_mock,
+    mock_config_entry: MockConfigEntry,
+) -> None:
+    """Test that device is registered with correct metadata."""
+    mock_config_entry.add_to_hass(hass)
+    await hass.config_entries.async_setup(mock_config_entry.entry_id)
+    await hass.async_block_till_done()
+
+    device_reg = dr.async_get(hass)
+    device = device_reg.async_get_device(
+        identifiers={(DOMAIN, mock_config_entry.entry_id)}
+    )
+    assert device is not None
+    assert device.manufacturer == "whatwatt AG"
+    assert device.model == "whatwatt Go"
+    assert device.name == "whatwatt"
+    assert device.configuration_url == "http://192.168.1.100"
+
+
+async def test_device_registry_no_ip(
+    hass: HomeAssistant,
+    mqtt_mock,
+    mock_config_entry_no_ip: MockConfigEntry,
+) -> None:
+    """Test device registry entry without IP has no configuration_url."""
+    mock_config_entry_no_ip.add_to_hass(hass)
+    await hass.config_entries.async_setup(mock_config_entry_no_ip.entry_id)
+    await hass.async_block_till_done()
+
+    device_reg = dr.async_get(hass)
+    device = device_reg.async_get_device(
+        identifiers={(DOMAIN, mock_config_entry_no_ip.entry_id)}
+    )
+    assert device is not None
+    assert device.configuration_url is None
+
+
+async def test_device_registry_single_device(
+    hass: HomeAssistant,
+    mqtt_mock,
+    mock_config_entry: MockConfigEntry,
+) -> None:
+    """Test that all entities belong to the same device."""
+    mock_config_entry.add_to_hass(hass)
+    await hass.config_entries.async_setup(mock_config_entry.entry_id)
+    await hass.async_block_till_done()
+
+    device_reg = dr.async_get(hass)
+    devices = dr.async_entries_for_config_entry(device_reg, mock_config_entry.entry_id)
+    assert len(devices) == 1

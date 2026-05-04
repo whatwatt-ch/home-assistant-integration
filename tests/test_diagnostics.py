@@ -2,13 +2,12 @@
 import json
 
 from homeassistant.core import HomeAssistant
-
 from pytest_homeassistant_custom_component.common import (
     MockConfigEntry,
     async_fire_mqtt_message,
 )
 
-from custom_components.whatwatt.const import DOMAIN, CONF_MQTT_TOPIC, CONF_DEVICE_IP
+from custom_components.whatwatt.const import CONF_DEVICE_IP, CONF_MQTT_TOPIC
 from custom_components.whatwatt.diagnostics import async_get_config_entry_diagnostics
 
 

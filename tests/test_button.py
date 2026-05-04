@@ -1,9 +1,6 @@
 """Tests for whatwatt button platform."""
 from homeassistant.core import HomeAssistant
-
 from pytest_homeassistant_custom_component.common import MockConfigEntry
-
-from custom_components.whatwatt.const import DOMAIN
 
 
 async def test_button_created(

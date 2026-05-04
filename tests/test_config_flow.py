@@ -1,10 +1,9 @@
 """Tests for whatwatt config flow."""
 from homeassistant.core import HomeAssistant
 from homeassistant.data_entry_flow import FlowResultType
-
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
-from custom_components.whatwatt.const import DOMAIN, CONF_MQTT_TOPIC, CONF_DEVICE_IP
+from custom_components.whatwatt.const import CONF_DEVICE_IP, CONF_MQTT_TOPIC, DOMAIN
 
 
 async def test_user_flow_success(

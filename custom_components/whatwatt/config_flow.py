@@ -3,15 +3,14 @@ import re
 from typing import Any
 
 import voluptuous as vol
-
 from homeassistant import config_entries
 from homeassistant.config_entries import ConfigFlowResult
 
 from .const import (
-    DOMAIN,
-    CONF_MQTT_TOPIC,
     CONF_DEVICE_IP,
+    CONF_MQTT_TOPIC,
     DEFAULT_NAME,
+    DOMAIN,
 )
 
 DATA_SCHEMA = vol.Schema(

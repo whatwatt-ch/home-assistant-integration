@@ -1,0 +1,22 @@
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+    ports:
+      - "1883:1883"
+
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    volumes:
+      - ha-config:/config
+      - ../custom_components:/config/custom_components:ro
+    ports:
+      - "8123:8123"
+    environment:
+      - TZ=Europe/Zurich
+    depends_on:
+      - mosquitto
+
+volumes:
+  ha-config:

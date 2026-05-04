@@ -11,11 +11,11 @@ from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.typing import ConfigType
 
 from .const import (
-    DOMAIN,
-    CONF_MQTT_TOPIC,
-    CONF_DEVICE_IP,
-    DEFAULT_NAME,
     ATTR_SYS_ID,
+    CONF_DEVICE_IP,
+    CONF_MQTT_TOPIC,
+    DEFAULT_NAME,
+    DOMAIN,
 )
 
 _LOGGER = logging.getLogger(__name__)
