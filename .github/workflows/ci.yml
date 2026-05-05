@@ -60,7 +60,7 @@ jobs:
     needs: unit-tests
     strategy:
       matrix:
-        ha-version: ["stable", "2024.4"]
+        ha-version: ["stable", "2025.1", "2024.11"]
     steps:
       - uses: actions/checkout@v4
 

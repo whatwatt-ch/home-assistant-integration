@@ -399,7 +399,12 @@ class TestReconfigure:
         assert "mqtt_topic" in result.get("errors", {})
 
     def test_reconfigure_changes_topic(self, ha_headers, whatwatt_integration):
-        """Test reconfigure via REST API (HA 2024.11+)."""
+        """Test reconfigure via REST API.
+
+        HA exposes reconfigure only via WebSocket, not REST.
+        This test will skip until we add websocket support.
+        Reconfigure is fully covered by unit tests (test_config_flow.py).
+        """
         entry = _get_whatwatt_entry(ha_headers)
         entry_id = entry["entry_id"]
 
@@ -408,7 +413,10 @@ class TestReconfigure:
             headers=ha_headers,
         )
         if resp.status_code == 404:
-            pytest.skip("Reconfigure REST endpoint not available in this HA version")
+            pytest.skip(
+                "Reconfigure is only available via WebSocket API, not REST. "
+                "Covered by unit tests in test_config_flow.py."
+            )
 
         assert resp.status_code == 200
         flow_id = resp.json()["flow_id"]
